@@ -6,18 +6,19 @@ alertas = []
 
 @app.route("/alert", methods=["POST"])
 def alert():
-    data = request.get_json()
-    temp = data.get("temperatura")
+   data = request.json
+   if data["tipo"] == "temperatura" and data["valor"] > 30:
+        alerta = {
+            "barrio": data["barrio"],
+            "mensaje": f"Temperatura alta: {data['valor']}°C",
+            "timestamp": data["timestamp"]
+        }
+        alertas.append(alerta)
+        print(f"ALERTA: {alerta}")
+        return "Alerta procesada", 200
 
-    if temp > 10:
-        jsonify({"Tmperatura excede el limite"})
-    elif temp <15:
-        jsonify({"Temperatura por debajo del limite"})
-
-    return jsonify({"message": "No alert"}), 200
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5004)
 
 
 
-
-
-## SE VA A MIMIR BAI :D ## 
