@@ -12,4 +12,22 @@
 \end{titlepage}
 \section*{Descripción del problema}
 
+Una ciudad busca monitorear de manera constante algunos atributos del clima como lo son:
+\begin{itemize}
+    \item Temperatura
+    \item Humedad
+    \item Calidad del aire
+\end{itemize}
+Para ello buscan implementar un sistema a base de microservicios que les permita obetner esta informacion
+de manera confiable. Tambien se encargara de enviar alertas de temperatura cuando 
+se superen los limites establecidos.
+\section*{Solucion proupuesta}
+Para poder solucionar el problema propuesto se ocupo la implementacion de microservicios 
+los cuales se encargan de diferentes tareas:
+\begin{itemize}
+    \item \textbf{sensor service}: Este microservicio se encarga de simular los sensores y enviar los datos en formato JSON
+    \item \textbf{collector service}: Este microservicio es el encargado de distribuir los datos al resto de microservicios
+    \item \textbf{Storage service}: En este microservicio ligamos los datos recibidos por collector service y la lista de barrios de la ciudad
+    \item \textbf{alert service}: Este microservicio es el encargado de hacer la validacion de la temperatura. Si esta excede de los limites establecidos enviara una alerta al sistema
+\end{itemize}
 \end{document}
