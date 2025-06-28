@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import requests
+
 
 app = Flask(__name__)
 alertas = []
@@ -11,7 +11,6 @@ def alert():
         alerta = {
             "barrio": data["barrio"],
             "mensaje": f"Temperatura alta: {data['valor']}°C",
-            "timestamp": data["timestamp"]
         }
         alertas.append(alerta)
         print(f"ALERTA: {alerta}")
